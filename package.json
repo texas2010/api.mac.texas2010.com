@@ -1,0 +1,53 @@
+{
+  "type": "module",
+  "name": "fastify-template-project",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with Fastify-CLI.",
+  "main": "app.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "plist:copy": "cp template/com.texas2010.mac.api.plist ~/Library/LaunchAgents/com.texas2010.mac.api.plist",
+    "plist:check": "plutil ~/Library/LaunchAgents/com.texas2010.mac.api.plist",
+    "plist:unload": "launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.texas2010.mac.api.plist || true",
+    "plist:load": "launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.texas2010.mac.api.plist",
+    "plist:reload": "npm run plist:unload && npm run plist:load",
+    "plist:restart": "launchctl kickstart -k gui/$(id -u)/com.texas2010.mac.api",
+    "caddy:restart": "echo 'Only run this if you changed the Caddyfile!' && brew services restart caddy",
+    "postcaddy:restart": "npm run deploy",
+    "preprod": "npm run build:ts",
+    "prod": "npm run plist:restart",
+    "deploy": "npm run build:ts && npm run plist:copy && npm run plist:reload",
+    "test": "npm run build:ts && tsc -p test/tsconfig.json && FASTIFY_AUTOLOAD_TYPESCRIPT=1 node --test --experimental-test-coverage --loader ts-node/esm test/**/*.ts",
+    "prestart": "node ./startup/preStart.js",
+    "start": "npm run build:ts && fastify start --config=./config/config.prod.json -l info dist/app.js",
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
+    "predev": "NODE_ENV=development node ./startup/preStart.js",
+    "dev": "NODE_ENV=development npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
+    "dev:start": "NODE_ENV=development fastify start --config=./config/config.dev.json --ignore-watch=.ts$ -w -l info -P dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/autoload": "^6.0.0",
+    "@fastify/cors": "^11.0.1",
+    "@fastify/sensible": "^6.0.0",
+    "fastify": "^5.0.0",
+    "fastify-cli": "^7.4.0",
+    "fastify-plugin": "^5.0.0",
+    "get-port": "^7.1.0",
+    "node-fetch": "^3.3.2",
+    "run-applescript": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.1.0",
+    "c8": "^10.1.2",
+    "concurrently": "^9.0.0",
+    "fastify-tsconfig": "^3.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "~5.8.2"
+  }
+}
