@@ -6,6 +6,25 @@ import { execSync } from 'child_process';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+async function directoryExists(path) {
+  try {
+    const stat = await fs.stat(path);
+    return stat.isDirectory();
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      return false; // Directory does not exist
+    }
+    throw err; // Some other error
+  }
+}
+
+if (!(await directoryExists('config'))) {
+  await fs.mkdir('config');
+  console.log('Directory created');
+} else {
+  console.log('It exists');
+}
+
 const port = await getPort();
 
 const config = {

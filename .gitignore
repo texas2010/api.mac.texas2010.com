@@ -29,7 +29,6 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
-config/*
 
 # Optional npm cache directory
 .npm
@@ -61,6 +60,7 @@ profile*
 # generated code
 examples/typescript-server.js
 test/types/index.js
+config/*
 
 # compiled app
 dist
