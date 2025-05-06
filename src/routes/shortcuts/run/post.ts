@@ -1,4 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
+import PQueue from 'p-queue';
 import { runAppleScript } from 'run-applescript';
 
 interface ShortcutRequestBody {
@@ -28,6 +29,8 @@ interface RunShortcutResError {
   message: string;
   file: string;
 }
+
+const queue = new PQueue({ concurrency: 1 });
 
 const runShortcut = async <T>(
   name: string,
@@ -66,11 +69,11 @@ export const post = async (
     return reply.badRequest();
   }
 
-  const getShortcutsRes = await runShortcut<GetShortcutsResponse>(
-    'GetShortcutsApiHelper'
+  const getShortcutsRes = await queue.add(() =>
+    runShortcut<GetShortcutsResponse>('GetShortcutsApiHelper')
   );
 
-  if (!('data' in getShortcutsRes)) {
+  if (!getShortcutsRes || !('data' in getShortcutsRes)) {
     return reply.badRequest();
   }
   const { shortcutNamesList } = getShortcutsRes.data;
@@ -79,9 +82,8 @@ export const post = async (
     return reply.notFound();
   }
 
-  const postShortcutRes = await runShortcut(
-    'PostShortcutsApiHelper',
-    request.body
+  const postShortcutRes = await queue.add(() =>
+    runShortcut('PostShortcutsApiHelper', request.body)
   );
 
   if (
