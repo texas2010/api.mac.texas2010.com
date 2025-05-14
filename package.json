@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "fastify-template-project",
+  "name": "api.mac.texas2010.com",
   "version": "1.0.0",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "main": "app.ts",
