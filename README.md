@@ -36,7 +36,7 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2025 [texas2010](https://github.com/texas2010).
 
-This project is [MIT](https://github.com/texas2010/api.mac.texas2010.com/LICENSE) licensed.
+This project is [MIT](LICENSE) licensed.
 
 ---
 
