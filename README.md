@@ -1,23 +1,43 @@
-# Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
+# Welcome to Texas2010's API for Mac 🍎
 
-This project was bootstrapped with Fastify-CLI.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/texas2010/api.mac.texas2010.com/LICENSE)
 
-## Available Scripts
+> This is a personal API built specifically for macOS integration. It powers custom Apple Shortcuts, handles background tasks, and serves as a communication layer between my Mac and various automations. Designed to give me full control over system-level workflows with minimal setup.
 
-In the project directory, you can run:
+## Install
 
-### `npm run dev`
+```sh
+npm install
+```
 
-To start the app in dev mode.\
+## Usage
 
-### `npm start`
+```sh
+npm run dev
+```
 
-For production mode
+## Run tests
 
-### `npm run test`
+```sh
+npm run test
+```
 
-Run the test cases.
+## Author
 
-## Learn More
+👤 **texas2010**
 
-To learn Fastify, check out the [Fastify documentation](https://fastify.dev/docs/latest/).
+- Github: [@texas2010](https://github.com/texas2010)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2025 [texas2010](https://github.com/texas2010).
+
+This project is [MIT](https://github.com/texas2010/api.mac.texas2010.com/LICENSE) licensed.
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
