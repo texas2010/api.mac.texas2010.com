@@ -2,7 +2,7 @@
   "type": "module",
   "name": "api.mac.texas2010.com",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with Fastify-CLI.",
+  "description": "This is a personal API built specifically for macOS integration. It powers custom Apple Shortcuts, handles background tasks, and serves as a communication layer between my Mac and various automations. Designed to give me full control over system-level workflows with minimal setup.",
   "main": "app.ts",
   "directories": {
     "test": "test"
@@ -29,8 +29,8 @@
     "dev:start": "NODE_ENV=development fastify start --config=./config/config.dev.json --ignore-watch=.ts$ -w -l info -P dist/app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "texas2010",
+  "license": "MIT",
   "dependencies": {
     "@fastify/autoload": "^6.0.0",
     "@fastify/cors": "^11.0.1",
