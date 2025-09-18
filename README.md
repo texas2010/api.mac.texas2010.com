@@ -16,6 +16,18 @@ npm install
 npm run dev
 ```
 
+## Running with PM2
+
+This project can be managed with PM2 for process management and optional auto-startup at login.
+
+### Install PM2
+
+You can install PM2 globally:
+
+```
+npm install -g pm2
+```
+
 ## Run tests
 
 ```sh

@@ -1,0 +1,26 @@
+{
+  "apps": [
+    {
+      "name": "api-mac.dev.texas2010.com",
+      "script": "npm",
+      "args": "run start",
+      "out_file": "./logs/development-out.log",
+      "error_file": "./logs/development-error.log",
+      "env": {
+        "NODE_ENV": "development",
+        "FASTIFY_CONFIG": "./config/config.dev.json"
+      }
+    },
+    {
+      "name": "api.mac.texas2010.com",
+      "script": "npm",
+      "args": "run start",
+      "out_file": "./logs/production-log.log",
+      "error_file": "./logs/production-error.log",
+      "env": {
+        "NODE_ENV": "production",
+        "FASTIFY_CONFIG": "./config/config.prod.json"
+      }
+    }
+  ]
+}
